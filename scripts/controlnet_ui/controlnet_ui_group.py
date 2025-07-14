@@ -434,7 +434,7 @@ class ControlNetUiGroup(object):
 
         with FormRow(elem_classes=["controlnet_main_options"]):
             self.enabled = gr.Checkbox(
-                label="Enable",
+                label="ВКЛЮЧИТЬ",
                 value=self.default_unit.enabled,
                 elem_id=f"{elem_id_tabname}_{tabname}_controlnet_enable_checkbox",
                 elem_classes=["cnet-unit-enabled"],
@@ -472,7 +472,7 @@ class ControlNetUiGroup(object):
         with gr.Row(elem_classes="controlnet_img2img_options"):
             if self.is_img2img:
                 self.upload_independent_img_in_img2img = gr.Checkbox(
-                    label="Upload independent control image",
+                    label="Добавить своё изображение",
                     value=False,
                     elem_id=f"{elem_id_tabname}_{tabname}_controlnet_same_img2img_checkbox",
                     elem_classes=["cnet-unit-same_img2img"],
@@ -503,7 +503,7 @@ class ControlNetUiGroup(object):
                 else gr.Radio
             )(
                 Preprocessor.get_all_preprocessor_tags(),
-                label="Control Type",
+                label="Режимы",
                 value="All",
                 elem_id=f"{elem_id_tabname}_{tabname}_controlnet_type_filter_radio",
                 elem_classes="controlnet_control_type_filter_group",
