@@ -404,7 +404,7 @@ class ControlNetUiGroup(object):
                         elem_id=f"{elem_id_tabname}_{tabname}_controlnet_canvas_cancel_button",
                     )
 
-            with gr.Row(elem_classes="controlnet_image_controls"):
+            with gr.Row(elem_classes="controlnet_image_controls", render=False):
                 FormHTML(
                     value="<p>Set the preprocessor to [invert] If your image has white background and black lines.</p>",
                     elem_classes="controlnet_invert_warning",
