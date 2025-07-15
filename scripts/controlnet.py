@@ -108,7 +108,7 @@ def prepare_mask(
     """
     Prepare an image mask for the inpainting process.
 
-    This function takes as input a PIL Image object and an instance of the 
+    This function takes as input a PIL Image object and an instance of the
     StableDiffusionProcessing class, and performs the following steps to prepare the mask:
 
     1. Convert the mask to grayscale (mode "L").
@@ -119,7 +119,7 @@ def prepare_mask(
 
     Args:
         mask (Image.Image): The input mask as a PIL Image object.
-        p (processing.StableDiffusionProcessing): An instance of the StableDiffusionProcessing class 
+        p (processing.StableDiffusionProcessing): An instance of the StableDiffusionProcessing class
                                                    containing the processing parameters.
 
     Returns:
@@ -317,7 +317,7 @@ class Script(scripts.Script, metaclass=(
         batch_hijack.instance.postprocess_batch_callbacks.insert(0, self.batch_tab_postprocess)
 
     def title(self):
-        return "ControlNet"
+        return "Контроллер изображения"
 
     def show(self, is_img2img):
         return scripts.AlwaysVisible
@@ -378,12 +378,12 @@ class Script(scripts.Script, metaclass=(
         max_models = shared.opts.data.get("control_net_unit_count", 3)
         elem_id_tabname = ("img2img" if is_img2img else "txt2img") + "_controlnet"
         with gr.Group(elem_id=elem_id_tabname):
-            with gr.Accordion(f"ControlNet {controlnet_version.version_flag}", open = False, elem_id="controlnet"):
+            with gr.Accordion(f"Контроллер изображения {controlnet_version.version_flag}", open = False, elem_id="controlnet"):
                 photopea = Photopea() if not shared.opts.data.get("controlnet_disable_photopea_edit", False) else None
                 if max_models > 1:
                     with gr.Tabs(elem_id=f"{elem_id_tabname}_tabs"):
                         for i in range(max_models):
-                            with gr.Tab(f"ControlNet Unit {i}",
+                            with gr.Tab(f"Контроль {i}",
                                         elem_classes=['cnet-unit-tab']):
                                 group, state = self.uigroup(f"ControlNet-{i}", is_img2img, elem_id_tabname, photopea)
                                 ui_groups.append(group)
@@ -393,7 +393,7 @@ class Script(scripts.Script, metaclass=(
                         group, state = self.uigroup("ControlNet", is_img2img, elem_id_tabname, photopea)
                         ui_groups.append(group)
                         controls.append(state)
-                with gr.Accordion("Batch Options", open=False, elem_id="controlnet_batch_options"):
+                with gr.Accordion("Batch Options", open=False, elem_id="controlnet_batch_options", render=False):
                     self.ui_batch_options(is_img2img, elem_id_tabname)
 
         for i, ui_group in enumerate(ui_groups):

@@ -30,7 +30,7 @@ class PreprocessorNone(Preprocessor):
 class PreprocessorCanny(Preprocessor):
     def __init__(self):
         super().__init__(name="canny")
-        self.tags = ["Canny"]
+        self.tags = ["Контурная маска"]
         self.slider_1 = PreprocessorParameter(
             minimum=1,
             maximum=255,

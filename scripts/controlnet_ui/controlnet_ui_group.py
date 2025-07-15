@@ -291,7 +291,7 @@ class ControlNetUiGroup(object):
         with gr.Group(visible=not self.is_img2img) as self.image_upload_panel:
             self.save_detected_map = gr.Checkbox(value=True, visible=False)
             with gr.Tabs():
-                with gr.Tab(label="Single Image") as self.upload_tab:
+                with gr.Tab(label="Одиночное изображение") as self.upload_tab:
                     with gr.Row(elem_classes=["cnet-image-row"], equal_height=True):
                         with gr.Group(elem_classes=["cnet-input-image-group"]):
                             self.image = gr.Image(
@@ -341,14 +341,14 @@ class ControlNetUiGroup(object):
                                     elem_classes=["cnet-close-preview"],
                                 )
 
-                with gr.Tab(label="Batch") as self.batch_tab:
+                with gr.Tab(label="Пачка") as self.batch_tab:
                     self.batch_image_dir = gr.Textbox(
                         label="Input Directory",
                         placeholder="Leave empty to use img2img batch controlnet input directory",
                         elem_id=f"{elem_id_tabname}_{tabname}_batch_image_dir",
                     )
 
-                with gr.Tab(label="Multi-Inputs") as self.merge_tab:
+                with gr.Tab(label="Можественн.") as self.merge_tab:
                     self.merge_gallery = gr.Gallery(
                         columns=[4], rows=[2], object_fit="contain", height="auto"
                     )
@@ -450,7 +450,7 @@ class ControlNetUiGroup(object):
                 elem_id=f"{elem_id_tabname}_{tabname}_controlnet_pixel_perfect_checkbox",
             )
             self.preprocessor_preview = gr.Checkbox(
-                label="Allow Preview",
+                label="Предпросмотр",
                 value=False,
                 elem_classes=["cnet-allow-preview"],
                 elem_id=preview_check_elem_id,
@@ -537,7 +537,7 @@ class ControlNetUiGroup(object):
 
         with gr.Row(elem_classes=["controlnet_weight_steps", "controlnet_row"]):
             self.weight = gr.Slider(
-                label="Control Weight",
+                label="Сила изменений",
                 value=self.default_unit.weight,
                 minimum=0.0,
                 maximum=2.0,
@@ -597,7 +597,7 @@ class ControlNetUiGroup(object):
         self.control_mode = gr.Radio(
             choices=[e.value for e in ControlMode],
             value=self.default_unit.control_mode.value,
-            label="Control Mode",
+            label="Приоритет",
             elem_id=f"{elem_id_tabname}_{tabname}_controlnet_control_mode_radio",
             elem_classes="controlnet_control_mode_radio",
         )
@@ -605,7 +605,7 @@ class ControlNetUiGroup(object):
         self.resize_mode = gr.Radio(
             choices=[e.value for e in ResizeMode],
             value=self.default_unit.resize_mode.value,
-            label="Resize Mode",
+            label="Ресайз",
             elem_id=f"{elem_id_tabname}_{tabname}_controlnet_resize_mode_radio",
             elem_classes="controlnet_resize_mode_radio",
             visible=not self.is_img2img,

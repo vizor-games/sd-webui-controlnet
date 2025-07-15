@@ -249,9 +249,9 @@ class ControlMode(Enum):
     The improved guess mode.
     """
 
-    BALANCED = "Balanced"
-    PROMPT = "My prompt is more important"
-    CONTROL = "ControlNet is more important"
+    BALANCED = "Сбалансировано"
+    PROMPT = "Мой Промпт важнее"
+    CONTROL = "Контроллер изображения важнее"
 
 
 class BatchOption(Enum):
@@ -264,9 +264,9 @@ class ResizeMode(Enum):
     Resize modes for ControlNet input images.
     """
 
-    RESIZE = "Just Resize"
-    INNER_FIT = "Crop and Resize"
-    OUTER_FIT = "Resize and Fill"
+    RESIZE = "Ресайз"
+    INNER_FIT = "Обрезать, потом Ресайз"
+    OUTER_FIT = "Ресайз, потом заполнить"
 
     def int_value(self):
         if self == ResizeMode.RESIZE:

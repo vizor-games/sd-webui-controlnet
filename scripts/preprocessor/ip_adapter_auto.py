@@ -6,7 +6,7 @@ from ..logging import logger
 class PreprocessorIPAdapterAuto(Preprocessor):
     def __init__(self):
         super().__init__(name="ip-adapter-auto")
-        self.tags = ["IP-Adapter"]
+        self.tags = ["Перенос стиля"]
         self.sorting_priority = 1000
         self.returns_image = False
         self.show_control_mode = False
