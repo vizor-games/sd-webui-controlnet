@@ -497,12 +497,22 @@ class ControlNetUiGroup(object):
             )
 
         with gr.Row(elem_classes=["controlnet_control_type", "controlnet_row"]):
+            map_tag_to_name = {"IP-Adapter": "Перенос стиля", "Canny": "Контурная маска"}
+            choises = []
+            for tag in Preprocessor.get_all_preprocessor_tags():
+                if tag == "InstructP2P":
+                    continue
+                name = value = tag
+                if tag in map_tag_to_name:
+                    name += f" ({map_tag_to_name[tag]})"
+                choises.append((name, value))
+
             self.type_filter = (
                 gr.Dropdown
                 if shared.opts.data.get("controlnet_control_type_dropdown", False)
                 else gr.Radio
             )(
-                Preprocessor.get_all_preprocessor_tags(),
+                choises,
                 label="Режимы",
                 value="All",
                 elem_id=f"{elem_id_tabname}_{tabname}_controlnet_type_filter_radio",
