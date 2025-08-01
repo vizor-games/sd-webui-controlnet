@@ -500,7 +500,7 @@ class ControlNetUiGroup(object):
             map_tag_to_name = {"IP-Adapter": "Перенос стиля", "Canny": "Контурная маска"}
             choises = []
             for tag in Preprocessor.get_all_preprocessor_tags():
-                if tag == "InstructP2P":
+                if tag in ["InstructP2P", "Lineart", "MLSD", "Scribble"]:
                     continue
                 name = value = tag
                 if tag in map_tag_to_name:

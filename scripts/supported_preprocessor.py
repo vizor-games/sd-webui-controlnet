@@ -115,7 +115,7 @@ class Preprocessor(ABC):
 
     @classmethod
     def add_supported_preprocessor(cls, p: "Preprocessor"):
-        if p.name not in ["none", "canny", "ip-adapter-auto"]:
+        if not(set(p.tags) & set(["InstructP2P", "Canny", "IP-Adapter"])):
             return
         assert p.label not in cls.all_processors, f"{p.label} already registered!"
         cls.all_processors[p.label] = p
