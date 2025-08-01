@@ -537,7 +537,7 @@ class ControlNetUiGroup(object):
 
         with gr.Row(elem_classes=["controlnet_weight_steps", "controlnet_row"]):
             self.weight = gr.Slider(
-                label="Сила изменений",
+                label="Сила",
                 value=self.default_unit.weight,
                 minimum=0.0,
                 maximum=2.0,
