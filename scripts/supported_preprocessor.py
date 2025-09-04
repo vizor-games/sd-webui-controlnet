@@ -86,7 +86,7 @@ class Preprocessor(ABC):
         maximum=2048,
         value=512,
         step=8,
-        visible=True,
+        visible=False,
     )
     slider_1 = PreprocessorParameter(visible=False)
     slider_2 = PreprocessorParameter(visible=False)
